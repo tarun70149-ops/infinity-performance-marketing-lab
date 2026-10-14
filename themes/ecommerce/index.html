@@ -215,64 +215,37 @@
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <!-- Load shared product data before the catalog renderer. -->
+  <script src="data/products.js"></script>
+  <script src="js/catalog.js"></script>
+
   <script>
-    /* DODS Commerce demo interactions. No third-party tracking scripts. */
-    const cartCount = document.getElementById("cart-count");
-    const toast = document.getElementById("toast");
-    const searchInput = document.getElementById("product-search");
-    const products = [...document.querySelectorAll(".product")];
-    let cartItems = 0;
-    let toastTimer;
+    // Demo newsletter interaction: no email is sent or stored.
+    const newsletterForm = document.getElementById("newsletter-form");
+    const newsletterToast = document.getElementById("toast");
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!newsletterForm.reportValidity()) return;
+
+        if (newsletterToast) {
+          newsletterToast.textContent =
+            "Demo signup complete. No email was sent or stored.";
+          newsletterToast.classList.add("show");
+          clearTimeout(window.dodsNewsletterToastTimer);
+          window.dodsNewsletterToastTimer = setTimeout(() => {
+            newsletterToast.classList.remove("show");
+          }, 2800);
+        }
+
+        newsletterForm.reset();
+        window.dispatchEvent(new CustomEvent(
+          "infinity:ecommerce-demo-newsletter",
+          { detail: { demo: true } }
+        ));
+      });
     }
-
-    document.querySelectorAll("[data-add]").forEach((button) => {
-      button.addEventListener("click", () => {
-        cartItems += 1;
-        cartCount.textContent = String(cartItems);
-        showToast(`${button.dataset.add} added to your demo cart. No order has been created.`);
-        window.dispatchEvent(new CustomEvent("infinity:ecommerce-demo-add-to-cart", {
-          detail: { item_name: button.dataset.add, demo: true }
-        }));
-      });
-    });
-
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.trim().toLowerCase();
-      let visible = 0;
-      products.forEach((product) => {
-        const matches = product.dataset.name.toLowerCase().includes(query) ||
-          product.dataset.category.toLowerCase().includes(query);
-        product.hidden = !matches;
-        if (matches) visible++;
-      });
-      document.getElementById("catalog-note").textContent =
-        visible ? `Showing ${visible} matching sample product${visible === 1 ? "" : "s"}.` :
-        "No matching sample products. Try another search.";
-    });
-
-    document.querySelectorAll("[data-category-filter]").forEach((category) => {
-      category.addEventListener("click", () => {
-        const chosen = category.dataset.categoryFilter;
-        searchInput.value = chosen;
-        searchInput.dispatchEvent(new Event("input"));
-      });
-    });
-
-    document.getElementById("newsletter-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!event.currentTarget.reportValidity()) return;
-      showToast("Demo signup complete. No email was sent or stored.");
-      event.currentTarget.reset();
-      window.dispatchEvent(new CustomEvent("infinity:ecommerce-demo-newsletter", {
-        detail: { demo: true }
-      }));
-    });
   </script>
 </body>
 </html>
