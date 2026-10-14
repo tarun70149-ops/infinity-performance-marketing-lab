@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#080b16">
+  <meta name="description" content="INFINITY Performance Marketing Lab — a practical environment for testing landing pages, lead generation, ecommerce funnels, conversion tracking and CRO.">
+
+  <title>INFINITY — Performance Marketing Lab</title>
+
+  <style>
+    :root {
+      --bg: #080b16;
+      --surface: #11172a;
+      --text: #f8fafc;
+      --muted: #9caac4;
+      --blue: #6d8cff;
+      --cyan: #55e6d2;
+      --border: rgba(255,255,255,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(72,94,220,0.18), transparent 38%),
+        radial-gradient(ellipse at 85% 35%, rgba(45,190,181,0.10), transparent 35%),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .navbar {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,11,22,0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      max-width: 1240px;
+      margin: auto;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+    }
+
+    .brand span {
+      color: var(--cyan);
+    }
+
+    .nav-status {
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 14px rgba(85,230,210,0.7);
+    }
+
+    .hero {
+      max-width: 1240px;
+      margin: auto;
+      padding: 105px 28px 75px;
+      text-align: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      border: 1px solid rgba(109,140,255,0.35);
+      border-radius: 30px;
+      background: rgba(109,140,255,0.08);
+      color: #c6d2ff;
+      font-size: 12px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      animation: fade-up 0.7s ease both;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 28px auto 22px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.06;
+      letter-spacing: -3px;
+      animation: fade-up 0.8s ease both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #91a8ff, #67e8d8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+      animation: fade-up 1s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+      animation: fade-up 1.1s ease both;
+    }
+
+    .button {
+      min-height: 49px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #080b16;
+      background: linear-gradient(110deg, #9eafff, #65e7d6);
+      box-shadow: 0 8px 30px rgba(109,140,255,0.18);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .metrics {
+      max-width: 850px;
+      margin: 65px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      background: rgba(17,23,42,0.65);
+      border-radius: 18px;
+      overflow: hidden;
+      animation: fade-up 1.2s ease both;
+    }
+
+    .metric {
+      padding: 23px 12px;
+    }
+
+    .metric + .metric {
+      border-left: 1px solid var(--border);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 25px;
+      color: #fff;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 50px 28px 95px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .label {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .theme-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(24,33,58,0.96), rgba(12,17,31,0.96));
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-card::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: -90px;
+      top: -100px;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      transition: transform 0.4s;
+    }
+
+    .dental-card::before {
+      background: rgba(85,230,210,0.12);
+    }
+
+    .commerce-card::before {
+      background: rgba(109,140,255,0.2);
+    }
+
+    .theme-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(139,161,255,0.55);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.22);
+    }
+
+    .theme-card:hover::before {
+      transform: scale(1.3);
+    }
+
+    .theme-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      font-size: 28px;
+      margin-bottom: 27px;
+    }
+
+    .theme-type {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .commerce-card .theme-type {
+      color: #a5b4fc;
+    }
+
+    .theme-card h3 {
+      margin: 9px 0 12px;
+      font-size: 27px;
+      line-height: 1.25;
+    }
+
+    .theme-card > p {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 23px 0 30px;
+    }
+
+    .feature-list span {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      color: #d3dbee;
+    }
+
+    .theme-card .button {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .workflow-item {
+      padding: 22px 18px;
+      background: rgba(17,23,42,0.62);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .workflow-number {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .workflow-item h3 {
+      font-size: 16px;
+      margin: 10px 0 7px;
+    }
+
+    .workflow-item p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .notice {
+      max-width: 850px;
+      margin: 0 auto 75px;
+      padding: 20px 24px;
+      border: 1px solid rgba(85,230,210,0.2);
+      background: rgba(85,230,210,0.045);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .notice strong {
+      color: #e5fffa;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        padding-top: 80px;
+      }
+
+      .theme-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .theme-card {
+        min-height: 350px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-inner {
+        padding: 17px 18px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .nav-status {
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 70px 19px 55px;
+      }
+
+      h1 {
+        letter-spacing: -1.8px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .metrics {
+        margin-top: 45px;
+      }
+
+      .metric {
+        padding: 17px 7px;
+      }
+
+      .metric strong {
+        font-size: 20px;
+      }
+
+      .metric span {
+        font-size: 10px;
+      }
+
+      .section {
+        padding: 35px 18px 65px;
+      }
+
+      .theme-card {
+        padding: 24px;
+      }
+
+      .theme-card h3 {
+        font-size: 24px;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .notice {
+        margin: 0 18px 55px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <a class="brand" href="index.html">
+        INFINITY<span>.</span>
+      </a>
+
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        PRACTICAL LEARNING LAB
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        Your Marketing Practice Environment
+      </div>
+
+      <h1>
+        Build Smarter.<br>
+        <span class="gradient-text">Market Better.</span>
+      </h1>
+
+      <p class="hero-description">
+        Practice real-world performance marketing using realistic
+        business websites, conversion funnels, analytics workflows
+        and conversion rate optimization experiments.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="button button-primary"
+          href="dashboard.html"
+          data-event="open_dashboard"
+        >
+          Explore the Lab <span aria-hidden="true">→</span>
+        </a>
+
+        <a
+          class="button button-secondary"
+          href="#themes"
+        >
+          Explore the Two Themes
+        </a>
+
+      </div>
+
+      <div class="metrics">
+
+        <div class="metric">
+          <strong>02</strong>
+          <span>Business Themes</span>
+        </div>
+
+        <div class="metric">
+          <strong>360°</strong>
+          <span>Marketing Practice</span>
+        </div>
+
+        <div class="metric">
+          <strong>01</strong>
+          <span>Unified Lab</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="themes">
+
+      <div class="section-heading reveal">
+
+        <div class="label">Choose Your Environment</div>
+
+        <h2>Two Businesses. Real Practice.</h2>
+
+        <p>
+          Explore appointment-based lead generation or an
+          e-commerce purchase funnel. Each theme has its own
+          business journey and testing opportunities.
+        </p>
+
+      </div>
+
+      <div class="theme-grid">
+
+        <article class="theme-card dental-card reveal">
+
+          <div class="theme-icon" aria-hidden="true">🦷</div>
+
+          <div class="theme-type">Theme 01 · Lead Generation</div>
+
+          <h3>Jaipur Smile Dental Care</h3>
+
+          <p>
+            A realistic dental clinic environment for practicing
+            landing pages, appointment forms, lead conversion
+            flows and conversion rate optimization.
+          </p>
+
+          <div class="feature-list">
+            <span>Appointment Booking</span>
+            <span>Lead Funnels</span>
+            <span>Form Testing</span>
+            <span>Landing Page CRO</span>
+          </div>
+
+          <a
+            class="button button-primary"
+            href="themes/dental/index.html"
+            data-event="open_dental_theme"
+          >
+            Open Dental Theme →
+          </a>
+
+        </article>
+
+        <article class="theme-card commerce-card reveal">
+
+          <div class="theme-icon" aria-hidden="true">🛍️</div>
+
+          <div class="theme-type">Theme 02 · E-commerce</div>
+
+          <h3>DODS Commerce</h3>
+
+          <p>
+            A realistic online shopping environment for practicing
+            product discovery, add-to-cart interactions, checkout
+            funnels and purchase conversion testing.
+          </p>
+
+          <div class="feature-list">
+            <span>Product Catalog</span>
+            <span>Shopping Cart</span>
+            <span>Checkout Testing</span>
+            <span>Purchase Funnel</span>
+          </div>
+
+          <a
+            class="button button-primary"
+            href="themes/ecommerce/index.html"
+            data-event="open_ecommerce_theme"
+          >
+            Open E-commerce Theme →
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <div class="section-heading reveal">
+
+        <div class="label">Our Method</div>
+
+        <h2>Learn by Doing.</h2>
+
+        <p>
+          Move from website interactions to measurable marketing
+          experiments through a structured testing workflow.
+        </p>
+
+      </div>
+
+      <div class="workflow">
+
+        <article class="workflow-item reveal">
+          <div class="workflow-number">STEP 01</div>
+          <h3>Explore</h3>
+          <p>Understand the business, website structure and user journey.</p>
+        </article>
+
+        <article class="workflow-item reveal">
+          <div class="workflow-number">STEP 02</div>
+          <h3>Configure</h3>
+          <p>Set up your own marketing and analytics tools.</p>
+        </article>
+
+        <article class="workflow-item reveal">
+          <div class="workflow-number">STEP 03</div>
+          <h3>Test</h3>
+          <p>Validate forms, events, funnels and conversion behavior.</p>
+        </article>
+
+        <article class="workflow-item reveal">
+          <div class="workflow-number">STEP 04</div>
+          <h3>Optimize</h3>
+          <p>Identify friction and improve the customer experience.</p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <aside class="notice">
+      <strong>Built for practical learning.</strong>
+      The lab provides simulated business interactions and
+      tracking-ready elements. You configure your own tracking
+      systems. No third-party tracking scripts are installed
+      automatically.
+    </aside>
+
+  </main>
+
+  <footer>
+    <strong>INFINITY PERFORMANCE MARKETING LAB</strong>
+    <br>
+    Learn. Experiment. Measure. Improve.
+    <br>
+    © 2026 · Educational testing environment
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+
+      revealElements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("visible");
+      });
+    }
+  </script>
+
+</body>
+</html>
