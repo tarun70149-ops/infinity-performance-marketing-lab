@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <meta name="description" content="DODS Commerce — a responsive e-commerce demo storefront for practical performance marketing and shopping journey testing.">
+  <title>DODS Commerce | Everyday, Upgraded</title>
+  <style>
+    :root {
+      --ink:#f6f7fb; --muted:#a9b0c2; --bg:#10131c; --panel:#171b27;
+      --panel-2:#202638; --line:rgba(255,255,255,.1); --accent:#c7f36b;
+      --accent-ink:#17200a; --radius:22px; --max:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    img{display:block;width:100%;object-fit:cover}
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .announcement{padding:9px 15px;text-align:center;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+    .header{position:sticky;top:0;z-index:20;background:rgba(16,19,28,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:22px;font-weight:950;letter-spacing:-.06em;line-height:1}
+    .brand span{color:var(--accent)}
+    .brand small{display:block;margin-top:7px;font-size:9px;letter-spacing:.2em;color:var(--muted);font-weight:700}
+    .nav-links{display:flex;align-items:center;gap:25px;color:#d2d6e1;font-size:13px;font-weight:700}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .search{width:185px;padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:#171b27;color:var(--ink);outline:none;font-size:12px}
+    .search:focus{border-color:var(--accent)}
+    .cart{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800}
+    .cart-count{display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11px}
+    .hero{padding:65px 0 42px}
+    .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:38px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:11px;letter-spacing:.17em;font-weight:900;text-transform:uppercase}
+    .eyebrow:before{content:"";width:23px;height:2px;background:var(--accent)}
+    h1{max-width:660px;margin:20px 0;font-size:clamp(42px,6.4vw,78px);line-height:.99;letter-spacing:-.075em}
+    h1 em{font-style:normal;color:var(--accent)}
+    .hero-copy>p{max-width:520px;color:var(--muted);font-size:15px;line-height:1.85}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;min-height:48px;padding:13px 19px;border:1px solid transparent;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:900;transition:transform .2s,filter .2s}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .btn-secondary{border-color:var(--line);background:transparent;color:var(--ink)}
+    .hero-note{margin-top:20px;color:#788198;font-size:10px}
+    .hero-visual{position:relative;min-width:0}
+    .hero-visual img{height:470px;border-radius:30px;object-position:center;filter:saturate(.85)}
+    .hero-tag{position:absolute;left:-18px;bottom:24px;max-width:225px;padding:17px 19px;border:1px solid var(--line);border-radius:17px;background:rgba(23,27,39,.94);box-shadow:0 18px 50px #0005}
+    .hero-tag strong{display:block;font-size:14px}
+    .hero-tag span{color:var(--muted);font-size:11px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px}
+    .stat{padding:22px 16px;text-align:center}
+    .stat+.stat{border-left:1px solid var(--line)}
+    .stat strong{display:block;font-size:18px;letter-spacing:-.04em}
+    .stat span{color:var(--muted);font-size:10px}
+    .section{padding:78px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:28px}
+    .label{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    h2{margin-top:9px;font-size:clamp(28px,4vw,43px);line-height:1.1;letter-spacing:-.055em}
+    .section-head p{max-width:390px;color:var(--muted);font-size:12px}
+    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .category{position:relative;overflow:hidden;min-height:180px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+    .category img{height:180px;opacity:.68;transition:transform .35s,opacity .35s}
+    .category:hover img{transform:scale(1.05);opacity:.85}
+    .category strong{position:absolute;left:17px;bottom:15px;font-size:16px}
+    .category span{display:block;color:#e0e3eb;font-size:10px;font-weight:600}
+    .products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .product{overflow:hidden;border:1px solid var(--line);border-radius:19px;background:var(--panel);transition:transform .22s,border-color .22s}
+    .product:hover{transform:translateY(-4px);border-color:#626d4d}
+    .product-image{position:relative;overflow:hidden;background:#252a38}
+    .product-image img{height:230px;transition:transform .35s}
+    .product:hover .product-image img{transform:scale(1.04)}
+    .badge{position:absolute;top:12px;left:12px;padding:5px 8px;border-radius:99px;background:var(--accent);color:var(--accent-ink);font-size:9px;font-weight:950;text-transform:uppercase;letter-spacing:.08em}
+    .product-info{padding:16px}
+    .product-category{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+    .product h3{margin:5px 0 8px;font-size:14px;line-height:1.35}
+    .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .price{font-size:15px;font-weight:900}
+    .price del{margin-left:5px;color:#7d8497;font-size:10px;font-weight:600}
+    .add-btn{width:35px;height:35px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--accent);font-size:21px;cursor:pointer}
+    .add-btn:hover{background:var(--accent);color:var(--accent-ink)}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .benefit{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+    .benefit-icon{font-size:23px}
+    .benefit h3{margin:12px 0 6px;font-size:15px}
+    .benefit p{color:var(--muted);font-size:12px}
+    .newsletter{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:32px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(120deg,#202638,#171b27)}
+    .newsletter p{margin-top:5px;color:var(--muted);font-size:12px}
+    .newsletter-form{display:flex;gap:8px;width:min(420px,100%)}
+    .newsletter-form input{min-width:0;flex:1;padding:13px;border:1px solid var(--line);border-radius:999px;background:#10131c;color:var(--ink);outline:none;font-size:12px}
+    .newsletter-form button{cursor:pointer}
+    .notice{margin-top:14px;color:#a9b0c2;font-size:10px}
+    footer{margin-top:30px;border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a:hover{color:var(--accent)}
+    .toast{position:fixed;right:20px;bottom:20px;z-index:50;max-width:calc(100% - 40px);padding:14px 18px;border:1px solid var(--line);border-radius:12px;background:#242a3a;color:var(--ink);box-shadow:0 12px 35px #0005;font-size:12px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}
+    .toast.show{opacity:1;transform:translateY(0)}
+    .empty-state{grid-column:1/-1;padding:30px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);text-align:center}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-visual img{height:390px}.nav-links{gap:14px}.search{width:140px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.container{width:calc(100% - 30px)}.nav{min-height:68px;flex-wrap:wrap;padding:13px 0;gap:12px}.brand{font-size:20px}.nav-links{order:3;width:100%;justify-content:space-between;gap:8px;font-size:11px}.nav-actions{margin-left:auto}.search{display:none}.cart{padding:8px 10px}.hero{padding-top:38px}.hero-grid{grid-template-columns:1fr}.hero-visual img{height:310px;border-radius:22px}.hero-tag{left:10px;bottom:12px}.hero-copy>p{font-size:13px}.hero-buttons{flex-direction:column;align-items:stretch}.stats{margin-top:28px}.stat{padding:17px 7px}.stat strong{font-size:15px}.stat span{font-size:9px}.section{padding:56px 0}.section-head{display:block}.section-head p{margin-top:12px}.categories{gap:10px}.category,.category img{min-height:150px;height:150px}.products{gap:11px}.product-image img{height:170px}.product-info{padding:12px}.product h3{font-size:12px}.price{font-size:13px}.price del{display:block;margin:1px 0 0}.add-btn{flex:0 0 32px;width:32px;height:32px}.benefits{grid-template-columns:1fr}.newsletter{align-items:stretch;flex-direction:column;padding:23px}.newsletter-form{width:100%}.newsletter-form .btn{padding:10px 13px}.footer-inner{align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="announcement">Demo storefront · Free shipping on demo orders over ₹999 · No real orders or payments</div>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="DODS Commerce home">DODS<span>.</span><small>COMMERCE LAB</small></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#categories">Categories</a>
+        <a href="#featured">Featured</a>
+        <a href="#benefits">Why DODS</a>
+      </nav>
+      <div class="nav-actions">
+        <input class="search" id="product-search" type="search" placeholder="Search demo products…" aria-label="Search products">
+        <a class="cart" href="#featured" aria-label="Demo cart">Cart <span class="cart-count" id="cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">New season · New essentials</div>
+            <h1>Everyday gear.<br><em>Better by design.</em></h1>
+            <p>Discover a curated mix of everyday essentials, smart accessories and active-life picks. This interactive storefront is built for e-commerce marketing practice—not real purchases.</p>
+            <div class="hero-buttons">
+              <a class="btn" href="#featured" data-event="hero_shop_click">Explore products <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-secondary" href="#categories">Browse categories</a>
+            </div>
+            <p class="hero-note">PRACTICE ENVIRONMENT · SAMPLE PRODUCTS · NO PAYMENT GATEWAY</p>
+          </div>
+          <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85" alt="Minimal wristwatch product displayed on a clean background" fetchpriority="high">
+            <div class="hero-tag"><strong>Find your everyday favorite.</strong><span>Explore the sample catalog and test the shopping journey.</span></div>
+          </div>
+        </div>
+        <div class="stats" aria-label="Store highlights">
+          <div class="stat"><strong>Curated</strong><span>Sample product range</span></div>
+          <div class="stat"><strong>Mobile-first</strong><span>Responsive storefront</span></div>
+          <div class="stat"><strong>Practice-ready</strong><span>Marketing lab demo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-head"><div><div class="label">Shop by interest</div><h2>Explore categories</h2></div><p>A simple category-led shopping experience, designed to help practice navigation, product discovery and campaign landing pages.</p></div>
+        <div class="categories">
+          <a class="category" href="#featured" data-category-filter="Lifestyle"><img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt=""><strong>Everyday Lifestyle<span>Useful daily picks</span></strong></a>
+          <a class="category" href="#featured" data-category-filter="Tech"><img loading="lazy" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt=""><strong>Tech & Audio<span>Sound and accessories</span></strong></a>
+          <a class="category" href="#featured" data-category-filter="Active"><img loading="lazy" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt=""><strong>Active Life<span>Move with confidence</span></strong></a>
+          <a class="category" href="#featured" data-category-filter="Carry"><img loading="lazy" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" alt=""><strong>Bags & Carry<span>Carry your essentials</span></strong></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head"><div><div class="label">The edit</div><h2>Featured products</h2></div><p>Sample catalog cards with prices and add-to-cart interactions. Products and prices are illustrative for this demo.</p></div>
+        <div class="products" id="product-grid" aria-live="polite">
+          <article class="product" data-name="Minimal Everyday Watch" data-category="Lifestyle">
+            <div class="product-image"><img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Minimal everyday watch"><span class="badge">Bestseller</span></div>
+            <div class="product-info"><div class="product-category">Lifestyle</div><h3>Minimal Everyday Watch</h3><div class="product-bottom"><div class="price">₹1,499 <del>₹1,999</del></div><button class="add-btn" type="button" aria-label="Add Minimal Everyday Watch to demo cart" data-add="Minimal Everyday Watch">+</button></div></div>
+          </article>
+          <article class="product" data-name="Studio Wireless Headphones" data-category="Tech">
+            <div class="product-image"><img loading="lazy" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Wireless headphones"><span class="badge">Popular</span></div>
+            <div class="product-info"><div class="product-category">Tech</div><h3>Studio Wireless Headphones</h3><div class="product-bottom"><div class="price">₹2,299 <del>₹2,999</del></div><button class="add-btn" type="button" aria-label="Add Studio Wireless Headphones to demo cart" data-add="Studio Wireless Headphones">+</button></div></div>
+          </article>
+          <article class="product" data-name="Active Runner Sneakers" data-category="Active">
+            <div class="product-image"><img loading="lazy" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Red active sneakers"><span class="badge">New</span></div>
+            <div class="product-info"><div class="product-category">Active</div><h3>Active Runner Sneakers</h3><div class="product-bottom"><div class="price">₹1,899 <del>₹2,399</del></div><button class="add-btn" type="button" aria-label="Add Active Runner Sneakers to demo cart" data-add="Active Runner Sneakers">+</button></div></div>
+          </article>
+          <article class="product" data-name="Everyday Utility Backpack" data-category="Carry">
+            <div class="product-image"><img loading="lazy" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80" alt="Everyday utility backpack"><span class="badge">Essential</span></div>
+            <div class="product-info"><div class="product-category">Carry</div><h3>Everyday Utility Backpack</h3><div class="product-bottom"><div class="price">₹1,199 <del>₹1,599</del></div><button class="add-btn" type="button" aria-label="Add Everyday Utility Backpack to demo cart" data-add="Everyday Utility Backpack">+</button></div></div>
+          </article>
+        </div>
+        <p class="notice" id="catalog-note">Showing 4 sample products. The reusable product catalog will be expanded in the next step.</p>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="section-head"><div><div class="label">The DODS standard</div><h2>Shopping made simpler.</h2></div><p>Example store messaging blocks that can be adapted for landing-page and conversion-rate optimization practice.</p></div>
+        <div class="benefits">
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">✦</div><h3>Curated essentials</h3><p>A focused selection helps shoppers scan products without feeling overwhelmed.</p></article>
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">↗</div><h3>Clear product discovery</h3><p>Categories and search help users find a relevant product with fewer steps.</p></article>
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">◈</div><h3>Built for practice</h3><p>Explore the demo cart and storefront interactions without making a real purchase.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter">
+          <div><div class="label">Stay in the loop</div><h2>Get the next drop.</h2><p>Try the sample newsletter interaction—no email is sent or stored.</p></div>
+          <form class="newsletter-form" id="newsletter-form"><input id="newsletter-email" type="email" placeholder="Email address" aria-label="Email address" required><button class="btn" type="submit">Sign up ↗</button></form>
+        </div>
+        <p class="notice">Demo notice: this website does not process real orders, payments, newsletter signups or customer data. Product images load from Unsplash and require an internet connection.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong style="color:var(--ink)">DODS COMMERCE</strong><p>Sample storefront · INFINITY Performance Marketing Lab</p></div>
+      <div class="footer-links"><a href="../../index.html">Back to INFINITY Lab</a><a href="../../dashboard.html">Lab Dashboard</a><a href="#categories">Categories</a><a href="#featured">Products</a></div>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* DODS Commerce demo interactions. No third-party tracking scripts. */
+    const cartCount = document.getElementById("cart-count");
+    const toast = document.getElementById("toast");
+    const searchInput = document.getElementById("product-search");
+    const products = [...document.querySelectorAll(".product")];
+    let cartItems = 0;
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    document.querySelectorAll("[data-add]").forEach((button) => {
+      button.addEventListener("click", () => {
+        cartItems += 1;
+        cartCount.textContent = String(cartItems);
+        showToast(`${button.dataset.add} added to your demo cart. No order has been created.`);
+        window.dispatchEvent(new CustomEvent("infinity:ecommerce-demo-add-to-cart", {
+          detail: { item_name: button.dataset.add, demo: true }
+        }));
+      });
+    });
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+      products.forEach((product) => {
+        const matches = product.dataset.name.toLowerCase().includes(query) ||
+          product.dataset.category.toLowerCase().includes(query);
+        product.hidden = !matches;
+        if (matches) visible++;
+      });
+      document.getElementById("catalog-note").textContent =
+        visible ? `Showing ${visible} matching sample product${visible === 1 ? "" : "s"}.` :
+        "No matching sample products. Try another search.";
+    });
+
+    document.querySelectorAll("[data-category-filter]").forEach((category) => {
+      category.addEventListener("click", () => {
+        const chosen = category.dataset.categoryFilter;
+        searchInput.value = chosen;
+        searchInput.dispatchEvent(new Event("input"));
+      });
+    });
+
+    document.getElementById("newsletter-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!event.currentTarget.reportValidity()) return;
+      showToast("Demo signup complete. No email was sent or stored.");
+      event.currentTarget.reset();
+      window.dispatchEvent(new CustomEvent("infinity:ecommerce-demo-newsletter", {
+        detail: { demo: true }
+      }));
+    });
+  </script>
+</body>
+</html>
