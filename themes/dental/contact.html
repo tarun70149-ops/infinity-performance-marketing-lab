@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7fbff">
+
+  <meta
+    name="description"
+    content="Contact page demonstration for Jaipur Smile Dental Care."
+  >
+
+  <title>Contact Us | Jaipur Smile Dental Care</title>
+
+  <style>
+    :root {
+      --primary: #087e8b;
+      --primary-dark: #06636d;
+      --navy: #102a43;
+      --text: #243b53;
+      --muted: #627d98;
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --border: #dce8ef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    .topbar {
+      padding: 9px 15px;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 19px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links a:not(.btn) {
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 72px 0 62px;
+      background:
+        radial-gradient(circle at 85% 15%, #d5f3ef, transparent 28%),
+        linear-gradient(135deg, #f7fbff, #edf9fa);
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 12px 0;
+      color: var(--navy);
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -1.4px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 35px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 9px 0;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 38px);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .label {
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: white;
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 17px;
+      border-radius: 13px;
+      background: #e7f8f6;
+      font-size: 22px;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .map-placeholder {
+      display: grid;
+      min-height: 300px;
+      place-items: center;
+      padding: 25px;
+      border: 1px dashed #a9cdd2;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, #eaf8f8, #f2f6ff);
+      text-align: center;
+    }
+
+    .map-placeholder .map-icon {
+      margin-bottom: 12px;
+      font-size: 42px;
+    }
+
+    .map-placeholder h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 21px;
+    }
+
+    .map-placeholder p {
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding: 17px;
+      border: 1px solid #cce8e8;
+      border-radius: 12px;
+      background: #effafa;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px;
+      border-radius: 18px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .cta h2 {
+      margin-bottom: 6px;
+      font-size: clamp(22px, 3vw, 29px);
+    }
+
+    .cta p {
+      color: #c3d5e5;
+      font-size: 12px;
+    }
+
+    .cta .btn {
+      flex-shrink: 0;
+      background: #75d9d1;
+      color: var(--navy);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer strong {
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 760px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .brand {
+        font-size: 14px;
+      }
+
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+
+      .nav-links .btn {
+        padding: 10px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 52px 0;
+      }
+
+      .section {
+        padding: 50px 0;
+      }
+
+      .cta {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 23px;
+      }
+
+      .cta .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    JAIPUR SMILE DENTAL CARE · EDUCATIONAL WEBSITE DEMO
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a class="brand" href="index.html">
+        Jaipur Smile
+        <small>Dental Care</small>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="doctors.html">Doctors</a>
+        <a class="btn" href="index.html#appointment">
+          Appointment →
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Get in Touch</div>
+
+        <h1>We're Here to Help You Take the Next Step.</h1>
+
+        <p>
+          Explore the contact experience for our educational dental
+          website. Actual clinic contact information can be added
+          after the business details are confirmed.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="label">Contact Information</div>
+          <h2>How Can You Reach Us?</h2>
+          <p>
+            These cards are placeholders for verified business details.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <article class="contact-card">
+            <div class="icon" aria-hidden="true">📍</div>
+            <h3>Clinic Address</h3>
+            <p>
+              Address to be confirmed.<br>
+              Jaipur, Rajasthan — demo location only.
+            </p>
+          </article>
+
+          <article class="contact-card">
+            <div class="icon" aria-hidden="true">📞</div>
+            <h3>Phone & Email</h3>
+            <p>
+              No contact number or email has been configured.<br>
+              Add verified details before publishing for real customers.
+            </p>
+          </article>
+
+          <article class="contact-card">
+            <div class="icon" aria-hidden="true">🕒</div>
+            <h3>Clinic Hours</h3>
+            <p>
+              Operating hours not yet configured.<br>
+              Confirm the actual schedule before using this section.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="label">Find the Clinic</div>
+          <h2>Location & Directions</h2>
+          <p>
+            A map can be connected once the real clinic address is known.
+          </p>
+        </div>
+
+        <div class="map-placeholder">
+          <div>
+            <div class="map-icon" aria-hidden="true">🗺️</div>
+
+            <h3>Map Placeholder</h3>
+
+            <p>
+              No map or clinic coordinates have been configured.
+              Replace this section with an accurate location map
+              when verified business details are available.
+            </p>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Demo disclosure:</strong>
+          This is a sample contact page. The business address,
+          contact details, hours and map have not been verified.
+          Do not use this page as a source of real clinic information.
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="cta">
+          <div>
+            <h2>Want to Explore the Booking Flow?</h2>
+            <p>
+              Try the appointment form in this educational website.
+              It does not create a real booking.
+            </p>
+          </div>
+
+          <a
+            class="btn"
+            href="index.html#appointment"
+            data-event="contact_appointment_cta_click"
+          >
+            Try Appointment Demo →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div>
+        <strong>Jaipur Smile Dental Care</strong>
+        <p>Educational website demonstration.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Dental Home</a>
+        <a href="services.html">Services</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="../../index.html">INFINITY Lab</a>
+        <a href="../../dashboard.html">Lab Dashboard</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
