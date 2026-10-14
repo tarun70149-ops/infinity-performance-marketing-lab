@@ -298,6 +298,53 @@
       margin-top: 15px;
     }
 
+
+    /* PAYMENT METHODS */
+    .payment-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .payment-option:has(input:checked) {
+      border-color: var(--accent);
+      background: rgba(199, 243, 107, 0.06);
+    }
+
+    .payment-option input {
+      width: auto;
+      margin-top: 4px;
+      accent-color: var(--accent);
+    }
+
+    .payment-option strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .payment-option small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .payment-demo-warning {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
     /* EMPTY CART */
 
     .empty-state {
@@ -572,6 +619,49 @@
             </div>
 
           </div>
+        </div>
+
+
+        <div class="form-section">
+          <h2 class="section-title">Payment Method</h2>
+
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="Cash on Delivery (Demo)" required>
+              <span>
+                <strong>💵 Cash on Delivery (COD)</strong>
+                <small>Demo selection only. No real order will be sent.</small>
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="UPI (Demo)">
+              <span>
+                <strong>📱 UPI</strong>
+                <small>Demo selection only. No UPI app or payment will open.</small>
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="Credit / Debit Card (Demo)">
+              <span>
+                <strong>💳 Credit / Debit Card</strong>
+                <small>Do not enter card details. No payment is processed.</small>
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="Net Banking (Demo)">
+              <span>
+                <strong>🏦 Net Banking</strong>
+                <small>Demo selection only. No bank website will open.</small>
+              </span>
+            </label>
+          </div>
+
+          <p class="payment-demo-warning">
+            These are simulated payment choices for this learning lab, not a real payment gateway.
+          </p>
         </div>
 
         <p class="form-note">
@@ -854,11 +944,6 @@
           return;
         }
 
-        /*
-          Re-read the cart before submission so an empty or changed
-          cart cannot be submitted using an outdated page display.
-        */
-
         const cart = readCart();
         const totals = calculateTotals(cart);
 
@@ -869,20 +954,41 @@
         }
 
         const formData = new FormData(checkoutForm);
+        const paymentMethod = formData.get("paymentMethod");
 
-        /*
-          This is a local demo only.
-          Customer fields are not transmitted or persisted.
-        */
+        if (!paymentMethod) {
+          alert("Please select a demo payment method.");
+          return;
+        }
 
-        const demoReference =
-          "DEMO-" + Date.now().toString().slice(-8);
+        // Demo only: do not store or transmit customer personal information.
+        const demoReference = "DEMO-" + Date.now().toString().slice(-8);
 
-        document.getElementById("success-reference").textContent =
-          "Demo reference: " + demoReference;
+        const orderForThankYou = {
+          reference: demoReference,
+          total: totals.subtotal,
+          itemCount: totals.itemCount,
+          paymentMethod: String(paymentMethod),
+          items: cart.map(function (item) {
+            const product = getProduct(item.id);
+            return {
+              id: String(product.id),
+              name: String(product.name || "Product"),
+              price: Number(product.price) || 0,
+              quantity: item.quantity
+            };
+          })
+        };
 
-        document.getElementById("success-total").textContent =
-          "Demo total: " + formatINR(totals.subtotal);
+        try {
+          sessionStorage.setItem(
+            "dods_demo_last_order_v1",
+            JSON.stringify(orderForThankYou)
+          );
+        } catch (error) {
+          alert("Could not prepare the demo confirmation. Please check browser storage.");
+          return;
+        }
 
         window.dispatchEvent(
           new CustomEvent("infinity:ecommerce-demo-purchase", {
@@ -890,39 +996,20 @@
               transaction_id: demoReference,
               currency: "INR",
               value: totals.subtotal,
-              items: cart.map(function (item) {
-                const product = getProduct(item.id);
-
-                return {
-                  item_id: String(product.id),
-                  item_name: String(product.name || ""),
-                  price: Number(product.price) || 0,
-                  quantity: item.quantity
-                };
-              })
+              payment_method: String(paymentMethod),
+              items: orderForThankYou.items
             }
           })
         );
 
-        /*
-          Clear the demo cart only after the demo confirmation
-          can be displayed. No backend order is created.
-        */
-
+        // This is a simulated order only; no backend order or payment exists.
         try {
           localStorage.removeItem(CART_KEY);
         } catch (error) {
-          // The demo confirmation can still be shown.
+          // Continue to the demo thank-you page.
         }
 
-        checkoutLayout.classList.add("hidden");
-        document.getElementById("page-heading").classList.add("hidden");
-        successState.classList.remove("hidden");
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.location.href = "thank-you.html";
       });
 
       renderCheckout();
