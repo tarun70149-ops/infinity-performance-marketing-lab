@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7fbff">
+  <meta name="description" content="Explore dental services in the Jaipur Smile Dental Care practice website demo.">
+  <title>Dental Services | Jaipur Smile Dental Care</title>
+
+  <style>
+    :root {
+      --primary: #087e8b;
+      --primary-dark: #06636d;
+      --navy: #102a43;
+      --text: #243b53;
+      --muted: #627d98;
+      --bg: #f7fbff;
+      --white: #fff;
+      --border: #dce8ef;
+      --shadow: 0 16px 42px rgba(16,42,67,.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    .topbar {
+      padding: 9px 15px;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links a:not(.btn) { color: var(--muted); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 76px 0 65px;
+      background:
+        radial-gradient(circle at 85% 15%, #d5f3ef, transparent 28%),
+        linear-gradient(135deg, #f7fbff, #edf9fa);
+    }
+
+    .eyebrow {
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 14px 0;
+      color: var(--navy);
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero .btn { margin-top: 24px; }
+
+    .section { padding: 72px 0; }
+
+    .section-heading {
+      max-width: 670px;
+      margin: 0 auto 35px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 9px 0;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 39px);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .label {
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: white;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: #abd9dc;
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 51px;
+      height: 51px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: #e7f8f6;
+      font-size: 24px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 9px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .service-card p {
+      flex: 1;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .service-card .btn {
+      align-self: flex-start;
+      margin-top: 20px;
+    }
+
+    .info {
+      margin-top: 35px;
+      padding: 20px;
+      border: 1px solid #cce8e8;
+      border-radius: 13px;
+      background: #effafa;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 30px;
+      border-radius: 18px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .cta h2 {
+      margin-bottom: 5px;
+      font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .cta p {
+      color: #c3d5e5;
+      font-size: 12px;
+    }
+
+    .cta .btn {
+      flex-shrink: 0;
+      background: #75d9d1;
+      color: var(--navy);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer p, footer a {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 800px) {
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: calc(100% - 28px); }
+
+      .nav { min-height: 68px; }
+
+      .brand { font-size: 14px; }
+
+      .nav-links { gap: 9px; }
+
+      .nav-links a:not(.btn) { display: none; }
+
+      .nav-links .btn {
+        padding: 10px;
+        font-size: 10px;
+      }
+
+      .hero { padding: 54px 0; }
+
+      .section { padding: 52px 0; }
+
+      .service-grid { grid-template-columns: 1fr; }
+
+      .service-card { padding: 23px; }
+
+      .cta {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 23px;
+      }
+
+      .cta .btn { width: 100%; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    JAIPUR SMILE DENTAL CARE · EDUCATIONAL WEBSITE DEMO
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        Jaipur Smile
+        <small>Dental Care</small>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="#services">Services</a>
+        <a class="btn" href="index.html#appointment">Book a Visit →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Explore Our Services</div>
+
+        <h1>
+          Find the Right Starting Point
+          for Your Dental Care.
+        </h1>
+
+        <p>
+          Explore common dental service categories and learn what to
+          discuss with a qualified dental professional. The right
+          treatment depends on an individual examination.
+        </p>
+
+        <a
+          class="btn"
+          href="index.html#appointment"
+          data-event="services_hero_appointment_click"
+        >
+          Request a Demo Appointment →
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="label">Dental Care Categories</div>
+          <h2>Explore Our Services</h2>
+          <p>
+            Select a service to continue to the appointment demo form.
+          </p>
+        </div>
+
+        <div class="service-grid">
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">🪥</div>
+            <h3>Dental Check-up</h3>
+            <p>
+              A routine dental examination can help assess teeth and
+              gums and identify issues that may need further evaluation.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Dental Check-up"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">✨</div>
+            <h3>Professional Cleaning</h3>
+            <p>
+              Professional cleaning may help remove plaque and tartar
+              buildup as part of a preventive oral care routine.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Teeth Cleaning"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">😁</div>
+            <h3>Smile Enhancement</h3>
+            <p>
+              Discuss available cosmetic options with a dentist to
+              understand suitability, limitations and expected outcomes.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Smile Enhancement"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">🦷</div>
+            <h3>Tooth Restoration</h3>
+            <p>
+              A dental professional can assess damaged teeth and explain
+              appropriate restorative options for your situation.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Tooth Restoration"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">🌿</div>
+            <h3>Gum Care</h3>
+            <p>
+              A dental assessment can help identify gum concerns and
+              guide an appropriate care plan.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Gum Care"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">👨‍👩‍👧</div>
+            <h3>Family Dentistry</h3>
+            <p>
+              Explore preventive care options suitable for different
+              life stages with a qualified dental professional.
+            </p>
+            <a
+              class="btn"
+              href="index.html#appointment"
+              data-service="Family Dentistry"
+              data-event="service_appointment_click"
+            >Request a Visit →</a>
+          </article>
+
+        </div>
+
+        <div class="info">
+          <strong>Educational information:</strong>
+          This page demonstrates a dental service discovery journey.
+          It is not a diagnosis or a substitute for professional dental
+          advice. Service availability and clinical recommendations
+          must be confirmed by a real clinic.
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Have a Service in Mind?</h2>
+            <p>
+              Continue to the sample appointment form to explore the
+              next step in the booking journey.
+            </p>
+          </div>
+
+          <a
+            class="btn"
+            href="index.html#appointment"
+            data-event="services_final_cta_click"
+          >
+            Continue to Booking →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>Jaipur Smile Dental Care</strong>
+        <p>Educational website demonstration.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Dental Home</a>
+        <a href="../../index.html">INFINITY Lab</a>
+        <a href="../../dashboard.html">Lab Dashboard</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Service selection is carried into the appointment form using
+    // a URL query parameter. No data is sent to a server.
+
+    document.querySelectorAll("[data-service]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const service = link.dataset.service;
+        const target = new URL(link.href, window.location.href);
+        target.searchParams.set("service", service);
+        link.href = target.href;
+      });
+    });
+  </script>
+
+</body>
+</html>
