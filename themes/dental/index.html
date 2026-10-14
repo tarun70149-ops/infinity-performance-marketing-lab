@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#f7fbff">
+  <meta name="description" content="Jaipur Smile Dental Care — explore dental treatments and request a demo appointment in our dental marketing practice environment.">
+
+  <title>Jaipur Smile Dental Care | Your Smile, Our Priority</title>
+
+  <style>
+    :root {
+      --primary: #087e8b;
+      --primary-dark: #06636d;
+      --accent: #c7f0ed;
+      --navy: #102a43;
+      --text: #243b53;
+      --muted: #627d98;
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --border: #dce8ef;
+      --shadow: 0 18px 50px rgba(16, 42, 67, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      background: var(--navy);
+      color: #e8f5ff;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      background: var(--accent);
+      font-size: 23px;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a:not(.btn) {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 12px 19px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(8, 126, 139, 0.18);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: #eef8fa;
+      color: var(--primary-dark);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 82px;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(199, 240, 237, 0.8),
+          transparent 28%
+        ),
+        linear-gradient(135deg, #f7fbff, #edf9fa);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border: 1px solid #cce8e8;
+      border-radius: 30px;
+      background: #ffffffb8;
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    h1 {
+      margin: 23px 0 20px;
+      color: var(--navy);
+      font-size: clamp(38px, 5.1vw, 65px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-width: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -20px;
+      bottom: 28px;
+      max-width: 235px;
+      padding: 18px;
+      border: 1px solid rgba(220, 232, 239, 0.9);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .floating-card p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .trust-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trust-item {
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .trust-item + .trust-item {
+      border-left: 1px solid var(--border);
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      max-width: 670px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 12px 0;
+      color: var(--navy);
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--white);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: #acd9dc;
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 53px;
+      height: 53px;
+      margin-bottom: 21px;
+      border-radius: 15px;
+      background: #e7f8f6;
+      font-size: 25px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 9px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .service-link {
+      display: inline-flex;
+      margin-top: 20px;
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .booking-section {
+      background: linear-gradient(135deg, #eaf8f8, #f6fbff);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      gap: 55px;
+    }
+
+    .booking-copy h2 {
+      margin: 12px 0 17px;
+      color: var(--navy);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.15;
+    }
+
+    .booking-copy > p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .booking-points {
+      display: grid;
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .booking-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .check {
+      display: grid;
+      flex: 0 0 25px;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    .booking-form {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .booking-form h3 {
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 23px;
+    }
+
+    .form-intro {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .form-field {
+      min-width: 0;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      outline: none;
+      background: #fcfeff;
+      color: var(--text);
+      font-size: 13px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(8, 126, 139, 0.1);
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .form-disclaimer {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .demo-message {
+      display: none;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid #a8e1d5;
+      border-radius: 10px;
+      background: #effcf8;
+      color: #126052;
+      font-size: 13px;
+    }
+
+    .demo-message.is-visible {
+      display: block;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .why-card {
+      padding: 25px;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .why-card h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 16px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cta-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 34px;
+      border-radius: 22px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .cta-banner h2 {
+      margin-bottom: 7px;
+      font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .cta-banner p {
+      color: #c3d5e5;
+      font-size: 13px;
+    }
+
+    .cta-banner .btn {
+      flex-shrink: 0;
+      background: #75d9d1;
+      color: #102a43;
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner strong {
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    .footer-inner p,
+    .footer-inner a {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+      }
+
+      .hero-visual {
+        max-width: 650px;
+      }
+
+      .hero-image {
+        height: 370px;
+      }
+
+      .floating-card {
+        right: 15px;
+      }
+
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .services-grid,
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .announcement {
+        font-size: 10px;
+      }
+
+      .nav-inner {
+        min-height: 70px;
+        gap: 10px;
+      }
+
+      .brand {
+        gap: 7px;
+        font-size: 14px;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
+
+      .brand small {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        gap: 0;
+      }
+
+      .nav-links > a:not(.btn) {
+        display: none;
+      }
+
+      .nav-links .btn {
+        min-height: 38px;
+        padding: 9px 11px;
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 55px 0 48px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 10vw, 51px);
+        letter-spacing: -1.5px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-image {
+        height: 290px;
+        border-radius: 20px;
+      }
+
+      .floating-card {
+        right: 8px;
+        bottom: 12px;
+        max-width: 200px;
+        padding: 13px;
+      }
+
+      .trust-item {
+        padding: 18px 7px;
+      }
+
+      .trust-item strong {
+        font-size: 12px;
+      }
+
+      .trust-item span {
+        font-size: 9px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        padding: 23px;
+      }
+
+      .booking-form {
+        padding: 21px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .form-field.full {
+        grid-column: auto;
+      }
+
+      .cta-banner {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      .cta-banner .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    A healthier smile starts with the right care · Jaipur Dental Practice Demo
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+
+      <a class="brand" href="index.html" aria-label="Jaipur Smile Dental Care home">
+        <span class="brand-icon" aria-hidden="true">🦷</span>
+        <span>
+          Jaipur Smile
+          <small>Dental Care</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#appointment">Appointment</a>
+        <a class="btn" href="#appointment" data-event="appointment_cta_click">
+          Book a Visit →
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Care for Every Smile
+          </div>
+
+          <h1>
+            Your Smile.<br>
+            <span>Our Priority.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover a welcoming dental care experience designed around
+            your comfort. Explore our services and request a demo
+            appointment through this interactive practice website.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="btn"
+              href="#appointment"
+              data-event="hero_appointment_click"
+            >
+              Request an Appointment →
+            </a>
+
+            <a class="btn btn-outline" href="#services">
+              Explore Services
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Educational demo website · Appointment requests are not sent to a clinic.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1100&q=85"
+            alt="Dental professional providing patient care"
+            fetchpriority="high"
+          >
+
+          <div class="floating-card">
+            <strong>Comfort Comes First</strong>
+            <p>
+              Learn about common dental services and explore a sample
+              appointment booking journey.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip" aria-label="Practice highlights">
+      <div class="container trust-grid">
+
+        <div class="trust-item">
+          <strong>Patient-Focused</strong>
+          <span>Comfort-led experience</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>Clear Information</strong>
+          <span>Understand your options</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>Simple Booking</strong>
+          <span>Easy demo form journey</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">Our Services</div>
+
+          <h2>Care for Your Dental Health</h2>
+
+          <p>
+            Explore example dental services. A qualified dentist can
+            recommend suitable treatment after examining your needs.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">🪥</div>
+            <h3>Dental Check-up</h3>
+            <p>
+              Routine examinations help assess oral health and identify
+              concerns that may need professional attention.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Dental Check-up"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">✨</div>
+            <h3>Teeth Cleaning</h3>
+            <p>
+              Professional cleaning can help remove plaque and tartar
+              buildup as part of an oral hygiene routine.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Teeth Cleaning"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">😁</div>
+            <h3>Smile Enhancement</h3>
+            <p>
+              Discuss cosmetic dental options with a qualified
+              professional to understand what may suit your smile.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Smile Enhancement"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">🦷</div>
+            <h3>Tooth Restoration</h3>
+            <p>
+              A dentist can evaluate damaged teeth and explain possible
+              restorative treatments based on your condition.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Tooth Restoration"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">🌿</div>
+            <h3>Gum Care</h3>
+            <p>
+              Professional assessment can help identify gum concerns
+              and support an appropriate oral care plan.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Gum Care"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon" aria-hidden="true">👨‍👩‍👧</div>
+            <h3>Family Dentistry</h3>
+            <p>
+              Explore preventive dental care options for different
+              stages of life with a qualified dental professional.
+            </p>
+            <a
+              class="service-link"
+              href="#appointment"
+              data-service="Family Dentistry"
+              data-event="service_appointment_click"
+            >
+              Request a Visit →
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- APPOINTMENT FORM -->
+    <section class="section booking-section" id="appointment">
+      <div class="container booking-grid">
+
+        <div class="booking-copy reveal">
+          <div class="section-label">Appointment Request</div>
+
+          <h2>Let's Plan Your Next Visit.</h2>
+
+          <p>
+            Complete this sample form to explore the appointment
+            conversion journey. This demonstration does not transmit
+            personal information or create a real booking.
+          </p>
+
+          <div class="booking-points">
+
+            <div class="booking-point">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Choose a service and preferred date.</span>
+            </div>
+
+            <div class="booking-point">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Experience client-side form validation.</span>
+            </div>
+
+            <div class="booking-point">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Test the simulated confirmation experience.</span>
+            </div>
+
+          </div>
+        </div>
+
+        <form
+          class="booking-form reveal"
+          id="appointment-form"
+          data-form-name="dental_appointment"
+          data-event="appointment_form_submit"
+        >
+          <h3>Request an Appointment</h3>
+
+          <p class="form-intro">
+            Demo form · Fields marked * are required.
+          </p>
+
+          <div class="form-grid">
+
+            <div class="form-field">
+              <label for="patient-name">Full Name *</label>
+              <input
+                id="patient-name"
+                name="name"
+                type="text"
+                placeholder="Your full name"
+                autocomplete="name"
+                required
+                maxlength="100"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="patient-phone">Phone Number *</label>
+              <input
+                id="patient-phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="10-digit phone number"
+                pattern="[6-9][0-9]{9}"
+                title="Enter a valid 10-digit Indian mobile number."
+                required
+              >
+            </div>
+
+            <div class="form-field full">
+              <label for="patient-email">Email Address</label>
+              <input
+                id="patient-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="patient-service">Preferred Service *</label>
+              <select id="patient-service" name="service" required>
+                <option value="">Select a service</option>
+                <option>Dental Check-up</option>
+                <option>Teeth Cleaning</option>
+                <option>Smile Enhancement</option>
+                <option>Tooth Restoration</option>
+                <option>Gum Care</option>
+                <option>Family Dentistry</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="appointment-date">Preferred Date *</label>
+              <input
+                id="appointment-date"
+                name="preferred_date"
+                type="date"
+                required
+              >
+            </div>
+
+            <div class="form-field full">
+              <label for="patient-message">Additional Note (Optional)</label>
+              <textarea
+                id="patient-message"
+                name="message"
+                maxlength="500"
+                placeholder="Optional note for this demo..."
+              ></textarea>
+            </div>
+
+          </div>
+
+          <button
+            class="btn form-submit"
+            type="submit"
+            data-event="appointment_submit_click"
+          >
+            Submit Demo Request →
+          </button>
+
+          <p class="form-disclaimer">
+            Demo only. Do not enter real personal or medical information.
+            Nothing is sent to a clinic.
+          </p>
+
+          <div
+            class="demo-message"
+            id="demo-message"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="section" id="why-us">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">The Experience</div>
+          <h2>Designed Around Your Comfort</h2>
+          <p>
+            A simple, clear experience helps visitors understand the
+            next step and find relevant information.
+          </p>
+        </div>
+
+        <div class="why-grid">
+
+          <article class="why-card reveal">
+            <h3>Clear Service Information</h3>
+            <p>
+              Help visitors understand available services before they
+              decide whether to request an appointment.
+            </p>
+          </article>
+
+          <article class="why-card reveal">
+            <h3>Simple Booking Journey</h3>
+            <p>
+              Keep the form organized, labels clear and required fields
+              easy to identify.
+            </p>
+          </article>
+
+          <article class="why-card reveal">
+            <h3>Mobile-Friendly Experience</h3>
+            <p>
+              Make the website usable on mobile screens, where many
+              local service searches begin.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container">
+
+        <div class="cta-banner reveal">
+          <div>
+            <h2>Ready to Explore the Booking Journey?</h2>
+            <p>
+              Try the appointment form and experience the complete
+              front-end demo flow.
+            </p>
+          </div>
+
+          <a
+            class="btn"
+            href="#appointment"
+            data-event="final_appointment_cta_click"
+          >
+            Try Demo Booking →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div>
+        <strong>Jaipur Smile Dental Care</strong>
+        <p>Educational dental website demonstration.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="../../index.html">Back to INFINITY Lab</a>
+        <a href="../../dashboard.html">Lab Dashboard</a>
+        <a href="#appointment">Appointment Demo</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* -----------------------------------------
+       INFINITY LAB — DENTAL DEMO INTERACTIONS
+       No third-party tracking scripts.
+    ----------------------------------------- */
+
+    const appointmentForm = document.getElementById("appointment-form");
+    const demoMessage = document.getElementById("demo-message");
+    const dateInput = document.getElementById("appointment-date");
+    const serviceSelect = document.getElementById("patient-service");
+
+    // Set the earliest selectable date to today.
+    const today = new Date();
+    const localToday = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")
+    ].join("-");
+
+    dateInput.min = localToday;
+
+    // Prefill service when a visitor selects a service card.
+    document.querySelectorAll("[data-service]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const selectedService = link.dataset.service;
+
+        const matchingOption = Array.from(serviceSelect.options).find(
+          (option) => option.value === selectedService ||
+            option.textContent === selectedService
+        );
+
+        if (matchingOption) {
+          serviceSelect.value = matchingOption.value;
+        }
+      });
+    });
+
+    // Simulated form submission: nothing is sent or stored.
+    appointmentForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!appointmentForm.reportValidity()) {
+        return;
+      }
+
+      const formData = new FormData(appointmentForm);
+      const firstName = String(formData.get("name") || "")
+        .trim()
+        .split(/\s+/)[0];
+
+      demoMessage.textContent =
+        `Thanks, ${firstName || "there"}! Your demo form was completed ` +
+        "successfully. No appointment was booked and no information was sent.";
+
+      demoMessage.classList.add("is-visible");
+      demoMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
+      // Deliberately do not send or persist form data.
+      appointmentForm.reset();
+      dateInput.min = localToday;
+
+      window.dispatchEvent(new CustomEvent("infinity:dental-demo-submit", {
+        detail: {
+          form_name: "dental_appointment",
+          demo: true
+        }
+      }));
+    });
+
+    // Reveal sections as they enter the viewport.
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
+  </script>
+
+</body>
+</html>
