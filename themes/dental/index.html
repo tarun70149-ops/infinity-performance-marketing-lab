@@ -689,6 +689,16 @@
       .nav-inner {
         min-height: 70px;
         gap: 10px;
+        flex-wrap: wrap;
+        padding-top: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        padding-bottom: 12px;
       }
 
       .brand {
@@ -708,11 +718,14 @@
       }
 
       .nav-links {
-        gap: 0;
+        gap: 8px 14px;
+        font-size: 11px;
       }
 
       .nav-links > a:not(.btn) {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 0;
       }
 
       .nav-links .btn {
@@ -847,7 +860,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#services">Services</a>
+        <a href="services.html">Services</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="contact.html">Contact</a>
         <a href="#why-us">Why Us</a>
         <a href="#appointment">Appointment</a>
         <a class="btn" href="#appointment" data-event="appointment_cta_click">
@@ -1322,6 +1337,22 @@
     ].join("-");
 
     dateInput.min = localToday;
+
+    // Prefill the service when arriving from the Services page.
+    // Supported URL format: index.html?service=Teeth%20Cleaning#appointment
+    const requestedService = new URLSearchParams(window.location.search).get("service");
+    if (requestedService) {
+      const normalizedRequestedService = requestedService.trim().toLowerCase();
+      const matchingRequestedOption = Array.from(serviceSelect.options).find(
+        (option) =>
+          option.value.trim().toLowerCase() === normalizedRequestedService ||
+          option.textContent.trim().toLowerCase() === normalizedRequestedService
+      );
+
+      if (matchingRequestedOption) {
+        serviceSelect.value = matchingRequestedOption.value || matchingRequestedOption.textContent;
+      }
+    }
 
     // Prefill service when a visitor selects a service card.
     document.querySelectorAll("[data-service]").forEach((link) => {
