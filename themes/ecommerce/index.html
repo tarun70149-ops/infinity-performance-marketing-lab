@@ -116,7 +116,7 @@
       </nav>
       <div class="nav-actions">
         <input class="search" id="product-search" type="search" placeholder="Search demo products…" aria-label="Search products">
-        <a class="cart" href="#featured" aria-label="Demo cart">Cart <span class="cart-count" id="cart-count">0</span></a>
+        <a class="cart" href="cart.html" aria-label="Open shopping cart">Cart <span class="cart-count" id="cart-count">0</span></a>
       </div>
     </div>
   </header>
@@ -218,6 +218,33 @@
   <!-- Load shared product data before the catalog renderer. -->
   <script src="data/products.js"></script>
   <script src="js/catalog.js"></script>
+  <script>
+    // Display the saved demo-cart quantity in the homepage header.
+    (function () {
+      const CART_KEY = "dods_demo_cart_v1";
+      const countElement = document.getElementById("cart-count");
+
+      function updateCartCount() {
+        if (!countElement) return;
+        try {
+          const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+          const count = Array.isArray(cart)
+            ? cart.reduce((total, item) => {
+                const quantity = Number(item && item.quantity);
+                return total + (Number.isInteger(quantity) && quantity > 0 ? quantity : 0);
+              }, 0)
+            : 0;
+          countElement.textContent = String(count);
+        } catch (error) {
+          countElement.textContent = "0";
+        }
+      }
+
+      updateCartCount();
+      window.addEventListener("storage", updateCartCount);
+      window.addEventListener("infinity:ecommerce-demo-add-to-cart", updateCartCount);
+    })();
+  </script>
 
   <script>
     // Demo newsletter interaction: no email is sent or stored.
