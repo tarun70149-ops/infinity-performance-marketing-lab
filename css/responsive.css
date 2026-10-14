@@ -1,0 +1,223 @@
+/* =========================================
+   INFINITY PERFORMANCE MARKETING LAB
+   Responsive Layout Utilities
+   File: css/responsive.css
+========================================= */
+
+/* ---------- Prevent Horizontal Overflow ---------- */
+
+html {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* ---------- Flexible Text ---------- */
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: anywhere;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+  .container {
+    width: min(100% - 40px, 100%);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    max-width: 760px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    line-height: 1.08;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .button-group .btn,
+  .button-group button {
+    width: 100%;
+  }
+
+  .dashboard-main {
+    padding: 20px 16px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dashboard-sidebar nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dashboard-sidebar nav a {
+    flex: 1 1 auto;
+  }
+
+  .card {
+    min-width: 0;
+  }
+
+  .table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 560px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 10vw, 2.7rem);
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-main {
+    padding: 16px 12px;
+  }
+}
+
+/* ---------- Touch Devices ---------- */
+
+@media (hover: none) {
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
