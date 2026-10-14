@@ -1,0 +1,255 @@
+/* =========================================
+   INFINITY PERFORMANCE MARKETING LAB
+   Shared Animation System
+   File: css/animations.css
+========================================= */
+
+/* ---------- Reveal on Scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Directional Reveals ---------- */
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Staggered Animation Delays ---------- */
+
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* ---------- Floating Animation ---------- */
+
+@keyframes infinity-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: infinity-float 5s ease-in-out infinite;
+}
+
+/* ---------- Gentle Pulse ---------- */
+
+@keyframes infinity-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.72;
+  }
+}
+
+.pulse-animation {
+  animation: infinity-pulse 2.5s ease-in-out infinite;
+}
+
+/* ---------- Glow Animation ---------- */
+
+@keyframes infinity-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.12);
+  }
+
+  50% {
+    box-shadow: 0 0 28px rgba(99, 102, 241, 0.28);
+  }
+}
+
+.glow-animation {
+  animation: infinity-glow 3s ease-in-out infinite;
+}
+
+/* ---------- Loading Spinner ---------- */
+
+@keyframes infinity-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(148, 163, 184, 0.25);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: infinity-spin 0.8s linear infinite;
+}
+
+/* ---------- Shimmer / Skeleton Loading ---------- */
+
+@keyframes infinity-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.08) 25%,
+    rgba(148, 163, 184, 0.18) 50%,
+    rgba(148, 163, 184, 0.08) 75%
+  );
+
+  background-size: 200% 100%;
+  animation: infinity-shimmer 1.8s ease-in-out infinite;
+  border-radius: 10px;
+}
+
+/* ---------- Interactive Hover ---------- */
+
+.hover-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-scale {
+  transition: transform 0.25s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.025);
+}
+
+/* ---------- Button Press ---------- */
+
+.press-effect {
+  transition: transform 0.15s ease;
+}
+
+.press-effect:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Gradient Movement ---------- */
+
+@keyframes infinity-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: infinity-gradient 8s ease infinite;
+}
+
+/* ---------- Status Indicator ---------- */
+
+@keyframes infinity-status-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  80%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.status-ping {
+  position: relative;
+}
+
+.status-ping::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: infinity-status-ping 1.8s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ---------- Accessibility: Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+  }
+}
