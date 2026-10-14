@@ -531,6 +531,63 @@
         transform: none;
       }
     }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+    }
+
+    .dashboard-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.055);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .dashboard-link:hover {
+      background: rgba(109,140,255,0.16);
+      border-color: rgba(109,140,255,0.55);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 520px) {
+      .nav-inner {
+        padding: 14px 16px;
+        gap: 10px;
+      }
+
+      .nav-actions {
+        gap: 10px;
+      }
+
+      .nav-status {
+        font-size: 0;
+        gap: 0;
+      }
+
+      .nav-status .status-dot {
+        width: 7px;
+        height: 7px;
+      }
+
+      .dashboard-link {
+        min-height: 34px;
+        padding: 7px 9px;
+        font-size: 11px;
+      }
+    }
   </style>
 </head>
 
@@ -543,9 +600,14 @@
         INFINITY<span>.</span>
       </a>
 
-      <div class="nav-status">
-        <span class="status-dot"></span>
-        PRACTICAL LEARNING LAB
+      <div class="nav-actions">
+        <a class="dashboard-link" href="dashboard.html" data-event="open_dashboard">
+          Dashboard <span aria-hidden="true">→</span>
+        </a>
+        <div class="nav-status">
+          <span class="status-dot"></span>
+          PRACTICAL LEARNING LAB
+        </div>
       </div>
 
     </div>
