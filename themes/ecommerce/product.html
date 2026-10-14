@@ -654,24 +654,62 @@
         );
 
         addToCartButton.onclick = function () {
-          /*
-            Demo interaction only.
-            This does not create a real cart or save an order.
-          */
+          const CART_KEY = "dods_demo_cart_v1";
 
-          window.dispatchEvent(
-            new CustomEvent("infinity:ecommerce-demo-add-to-cart", {
-              detail: {
-                item_id: String(product.id || ""),
-                item_name: String(product.name || ""),
-                item_category: String(product.category || ""),
-                price: currentPrice,
-                quantity: 1
+          try {
+            let savedCart = [];
+
+            try {
+              const parsedCart = JSON.parse(
+                localStorage.getItem(CART_KEY) || "[]"
+              );
+
+              if (Array.isArray(parsedCart)) {
+                savedCart = parsedCart;
               }
-            })
-          );
+            } catch (storageReadError) {
+              savedCart = [];
+            }
 
-          showToast("Demo: " + (product.name || "Product") + " added!");
+            const productId = String(product.id || "");
+            const existingItem = savedCart.find(function (item) {
+              return item && String(item.id) === productId;
+            });
+
+            if (existingItem) {
+              const currentQuantity = Number(existingItem.quantity) || 0;
+
+              if (currentQuantity >= 99) {
+                showToast("Maximum quantity reached!");
+                return;
+              }
+
+              existingItem.quantity = currentQuantity + 1;
+            } else {
+              savedCart.push({
+                id: productId,
+                quantity: 1
+              });
+            }
+
+            localStorage.setItem(CART_KEY, JSON.stringify(savedCart));
+
+            window.dispatchEvent(
+              new CustomEvent("infinity:ecommerce-demo-add-to-cart", {
+                detail: {
+                  item_id: productId,
+                  item_name: String(product.name || ""),
+                  item_category: String(product.category || ""),
+                  price: Number(product.price),
+                  quantity: 1
+                }
+              })
+            );
+
+            window.location.href = "cart.html";
+          } catch (error) {
+            showToast("Unable to save cart. Check browser storage.");
+          }
         };
       }
 
