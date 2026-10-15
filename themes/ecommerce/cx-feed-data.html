@@ -1,43 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CX Feed Data | DODS Commerce</title>
 <style>
-:root{color-scheme:dark;--bg:#0b0d12;--panel:#141821;--line:#293140;--text:#f4f6fb;--muted:#a7b0c0;--accent:#b8f36b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#1c2635 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#a9c8ff;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:28px 20px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}.brand{font-weight:800;letter-spacing:.08em;font-size:13px;color:var(--accent)}.top small{color:var(--muted)}.hero{padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#171e29,#11151d);margin-bottom:20px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:11px;font-weight:800}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-.04em;margin:10px 0}.hero p{max-width:760px;color:var(--muted);margin:0}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.stat span{display:block;color:var(--muted);font-size:13px}.stat strong{display:block;font-size:27px;margin-top:6px}.panel{margin-top:16px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.panel h2{font-size:19px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#202735;color:var(--text);border-radius:11px;padding:11px 15px;font-weight:750;cursor:pointer}.btn.primary{background:var(--accent);color:#10150a;border-color:var(--accent)}.btn:disabled{opacity:.45;cursor:not-allowed}.notice{margin-top:14px;padding:12px 14px;border-radius:12px;background:#1a222d;border:1px solid var(--line);color:var(--muted);font-size:13px}.notice strong{color:var(--text)}.notice.error{border-color:#79473f;color:#ffbdad}.table-wrap{overflow:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:1000px;background:#10141b}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#1a202b;color:#cbd4e2;font-size:11px;text-transform:uppercase;letter-spacing:.08em}td{font-size:13px;color:#e4e8ef}td img{width:44px;height:44px;object-fit:cover;border-radius:8px;background:#222}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #46533d;color:var(--accent);border-radius:99px;padding:2px 8px;font-size:11px;white-space:nowrap}.foot{color:var(--muted);font-size:12px;margin-top:18px}@media(max-width:650px){.wrap{padding:18px 12px 36px}.hero{padding:22px}.stats{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.stat{padding:15px}}
+:root{color-scheme:dark;--bg:#0b0d12;--panel:#141821;--panel2:#1a202b;--line:#303949;--text:#f4f6fb;--muted:#a7b0c0;--accent:#b8f36b;--blue:#a9c8ff;--danger:#ffb9aa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#1c2635 0,transparent 42%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--blue);text-decoration:none}.wrap{max-width:1400px;margin:auto;padding:22px 18px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}.brand{font-weight:850;letter-spacing:.08em;color:var(--accent);font-size:12px}.crumb{color:var(--muted);font-size:12px}.hero{padding:23px 25px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#171e29,#11151d);margin-bottom:17px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--accent);font-size:10px;font-weight:800}.hero h1{font-size:clamp(27px,4vw,38px);line-height:1.1;letter-spacing:-.04em;margin:8px 0}.hero p{color:var(--muted);margin:0;max-width:900px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:16px;align-items:start}.panel,.side{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px}.panel+.panel{margin-top:16px}.panel h2,.side h2{font-size:17px;margin:0 0 3px}.muted{color:var(--muted)}.sub{font-size:12px;color:var(--muted);margin:0 0 16px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 16px}.field label{display:block;font-size:12px;font-weight:750;margin-bottom:6px;color:#dce3ed}.required{color:#ff8c78}.field input,.field select{width:100%;background:#0d1118;color:var(--text);border:1px solid #414b5c;border-radius:8px;padding:10px 11px;min-height:40px;font:inherit}.field input:focus,.field select:focus{outline:2px solid #789b4b;outline-offset:1px}.hint{font-size:11px;color:var(--muted);margin-top:5px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.btn{border:1px solid #3b4657;background:#222a38;color:var(--text);border-radius:9px;padding:10px 14px;font-weight:800;cursor:pointer}.btn.primary{background:var(--accent);color:#10150a;border-color:var(--accent)}.btn:disabled{opacity:.45;cursor:not-allowed}.status{margin-top:14px;padding:11px 13px;border-radius:9px;background:#1a222d;border:1px solid var(--line);color:var(--muted);font-size:12px}.status strong{color:var(--text)}.status.error{border-color:#79473f;color:var(--danger)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}.stat{background:#10151d;border:1px solid var(--line);border-radius:11px;padding:13px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:22px;margin-top:3px}.table-wrap{overflow:auto;margin-top:13px;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:940px}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--panel2);color:#cbd4e2;font-size:10px;text-transform:uppercase;letter-spacing:.07em}td{font-size:12px}td img{width:38px;height:38px;object-fit:cover;border-radius:7px}.pill{display:inline-block;border:1px solid #46533d;color:var(--accent);border-radius:99px;padding:2px 7px;font-size:10px}.warning{color:var(--danger)}.side{position:sticky;top:12px}.side ul{padding-left:18px;color:var(--muted);font-size:12px}.side li{margin:8px 0}.note{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.6}.hidden{display:none!important}
+@media(max-width:950px){.layout{grid-template-columns:1fr}.side{position:static}.form-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.wrap{padding:14px 10px 30px}.hero{padding:19px}.panel,.side{padding:14px}.form-grid,.stats{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
-<body><main class="wrap">
-<header class="top"><div><div class="brand">DODS COMMERCE · PERFORMANCE MARKETING LAB</div><small>Catalog tools / CX Feed Data</small></div><a href="index.html">← Back to Store</a></header>
-<section class="hero"><div class="eyebrow">Product feed exporter · v1.0</div><h1>CX Feed Data</h1><p>Preview your DODS product catalog, identify missing feed fields, and export a Meta Commerce Manager-friendly CSV. This tool reads existing product data; it does not create or publish real products.</p></section>
-<section class="stats"><div class="stat"><span>Products loaded</span><strong id="productCount">—</strong></div><div class="stat"><span>Products with warnings</span><strong id="warningCount">—</strong></div><div class="stat"><span>Export format</span><strong style="font-size:22px">CSV · UTF-8</strong></div></section>
-<section class="panel"><div class="panel-head"><div><h2>Catalog feed preview</h2><p class="sub">Review the values before downloading the feed.</p></div><div class="actions"><button class="btn" id="refreshBtn" type="button">Refresh catalog</button><button class="btn primary" id="exportBtn" type="button">↓ Export Meta CSV</button></div></div>
-<div class="notice" id="status" role="status">Loading product data…</div><div class="table-wrap"><table><thead><tr><th>Product</th><th>ID</th><th>Title</th><th>Price</th><th>Availability</th><th>Image</th><th>Link</th><th>Validation</th></tr></thead><tbody id="feedRows"><tr><td colspan="8">Loading…</td></tr></tbody></table></div>
-<p class="foot">Demo notice: current catalog products and prices are illustrative. Verify actual product rights, prices, images, availability and URLs before using a feed in a live advertising account.</p></section></main>
+<body>
+<main class="wrap">
+<header class="top"><div><div class="brand">DODS COMMERCE · PERFORMANCE MARKETING LAB</div><div class="crumb">Marketing Tools / CX Feed Data</div></div><a href="index.html">← Back to DODS Store</a></header>
+<section class="hero"><div class="eyebrow">Catalog feed builder · v1.1</div><h1>New Product Feed</h1><p>Choose a marketplace template, country, language, currency and file format. Preview the catalog, validate product fields, then export a feed file for practice. Designed to feel familiar to product-feed tools while remaining part of DODS Commerce.</p></section>
+<div class="layout">
+<div>
+<section class="panel">
+<h2>Content Settings</h2><p class="sub">Choose how the catalog feed should be formatted.</p>
+<div class="form-grid">
+<div class="field"><label for="country">Country <span class="required">*</span></label><select id="country"><option value="IN">India</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="AU">Australia</option><option value="CA">Canada</option></select></div>
+<div class="field"><label for="template">Template <span class="required">*</span></label><select id="template"><option value="meta">Meta / Facebook Catalog</option><option value="google">Google Shopping</option><option value="pinterest">Pinterest Catalog</option><option value="tiktok">TikTok Catalog</option><option value="generic">Generic Product Feed</option></select></div>
+<div class="field"><label for="fileName">File Name <span class="required">*</span></label><input id="fileName" value="dods-product-feed" maxlength="80"><div class="hint">File extension is added automatically.</div></div>
+<div class="field"><label for="fileType">File Type <span class="required">*</span></label><select id="fileType"><option value="csv">CSV</option><option value="xml">XML</option><option value="txt">TXT (tab-separated)</option></select></div>
+<div class="field"><label for="variations">Include Variations? <span class="required">*</span></label><select id="variations"><option value="simple">Simple products only</option><option value="parent_variants">Parent + variations</option><option value="variants">Variations only</option></select><div class="hint">Current DODS catalog contains simple products; no variation records exist yet.</div></div>
+<div class="field"><label for="variablePrice">Variable Product Price</label><select id="variablePrice"><option value="first">First variation price</option><option value="min">Minimum variation price</option><option value="max">Maximum variation price</option></select></div>
+<div class="field"><label for="variableQty">Variable Product Quantity</label><select id="variableQty"><option value="first">First variation quantity</option><option value="sum">Sum of variation quantities</option></select></div>
+<div class="field"><label for="language">Language <span class="required">*</span></label><select id="language"><option value="en">English</option><option value="hi">Hindi</option></select></div>
+<div class="field"><label for="currency">Currency <span class="required">*</span></label><select id="currency"><option value="INR">INR — Indian Rupee</option><option value="USD">USD — US Dollar</option><option value="GBP">GBP — Pound Sterling</option><option value="AUD">AUD — Australian Dollar</option><option value="CAD">CAD — Canadian Dollar</option></select><div class="hint">Currency selection formats the label; it does not convert prices using FX rates.</div></div>
+<div class="field"><label for="brand">Brand</label><input id="brand" value="DODS Commerce" maxlength="120"></div>
+<div class="field"><label for="itemsWrapper">Items Wrapper (XML)</label><input id="itemsWrapper" value="products" maxlength="50"></div>
+<div class="field"><label for="itemWrapper">Single Item Wrapper (XML)</label><input id="itemWrapper" value="product" maxlength="50"></div>
+</div>
+<div class="actions"><button class="btn" id="refreshBtn" type="button">↻ Refresh Catalog</button><button class="btn primary" id="exportBtn" type="button">↓ Generate & Download Feed</button></div>
+<div class="status" id="status" role="status">Loading catalog…</div>
+</section>
+<section class="panel"><div class="panel-head"><h2>Feed Preview</h2><p class="sub">Fields shown here are based on the selected template.</p></div><div class="stats"><div class="stat"><span>Products loaded</span><strong id="productCount">—</strong></div><div class="stat"><span>Products with warnings</span><strong id="warningCount">—</strong></div><div class="stat"><span>Template</span><strong id="templateStat" style="font-size:15px">Meta</strong></div></div>
+<div class="table-wrap"><table><thead id="tableHead"></thead><tbody id="feedRows"><tr><td>Loading…</td></tr></tbody></table></div></section>
+</div>
+<aside class="side"><h2>Feed Merchant Info</h2><p class="sub">Supported export formats: CSV, XML, TXT</p><ul><li><strong>Template:</strong> maps product fields to a common marketplace schema.</li><li><strong>Validation:</strong> flags missing IDs, titles, descriptions, prices or image URLs.</li><li><strong>Image URL:</strong> should be publicly reachable and point to the correct product image.</li><li><strong>Product URL:</strong> should open the matching product detail page on the deployed site.</li><li><strong>Live upload:</strong> check the selected platform's current feed specification before uploading.</li></ul><div class="status">Demo environment: this tool exports the products in <code>data/products.js</code>. It does not connect to WordPress, sync automatically or upload anything to Meta/Google.</div><p class="note">Current products are illustrative examples. Do not use them as real products in a live advertising account without verifying product data and usage rights.</p></aside>
+</div>
+</main>
 <script src="data/products.js"></script>
 <script>
 (() => {
 const $=id=>document.getElementById(id);
-const fields=["id","title","description","availability","condition","price","link","image_link","brand","product_type","sale_price","google_product_category"];
+const templates={
+ meta:{label:"Meta / Facebook Catalog",fields:["id","title","description","availability","condition","price","link","image_link","brand","product_type","sale_price","google_product_category"]},
+ google:{label:"Google Shopping",fields:["id","title","description","availability","condition","price","link","image_link","brand","product_type","sale_price","google_product_category"]},
+ pinterest:{label:"Pinterest Catalog",fields:["id","title","description","link","image_link","price","availability","brand","condition","google_product_category","product_type"]},
+ tiktok:{label:"TikTok Catalog",fields:["sku_id","title","description","availability","condition","price","link","image_link","brand"]},
+ generic:{label:"Generic Product Feed",fields:["id","title","description","price","currency","availability","condition","link","image_link","brand","category","sale_price"]}
+};
 let feed=[];
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function makeFeed(p){
-const currency=String(p.currency||"INR").toUpperCase(), price=Number(p.price), compare=Number(p.compareAtPrice), image=String(p.image||"").trim(), title=String(p.name||"").trim(), description=String(p.description||"").trim();
-const av=String(p.availability||"in_stock").toLowerCase(), availability=av==="in_stock"?"in stock":av==="out_of_stock"?"out of stock":av==="preorder"?"preorder":av.replace(/_/g," ");
-const warnings=[];if(!p.id)warnings.push("Missing ID");if(!title)warnings.push("Missing title");if(!description)warnings.push("Missing description");if(!Number.isFinite(price)||price<0)warnings.push("Invalid price");if(!image||!/^https?:\/\//i.test(image))warnings.push("Invalid image URL");
-return {id:String(p.id||""),title,description,availability,condition:"new",price:(Number.isFinite(price)&&price>=0?price:0).toFixed(2)+" "+currency,link:new URL("product.html?id="+encodeURIComponent(p.id||""),location.href).href,image_link:image,brand:"DODS Commerce",product_type:String(p.category||""),sale_price:Number.isFinite(compare)&&compare>price&&Number.isFinite(price)?price.toFixed(2)+" "+currency:"",google_product_category:"",_warnings:warnings};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function mapProduct(p){
+ const currency=$("currency").value, price=Number(p.price), compare=Number(p.compareAtPrice), image=String(p.image||"").trim(), title=String(p.name||"").trim(), description=String(p.description||"").trim();
+ const av=String(p.availability||"in_stock").toLowerCase(), availability=av==="in_stock"?"in stock":av==="out_of_stock"?"out of stock":av==="preorder"?"preorder":av.replace(/_/g," ");
+ const warnings=[];if(!p.id)warnings.push("Missing ID");if(!title)warnings.push("Missing title");if(!description)warnings.push("Missing description");if(!Number.isFinite(price)||price<0)warnings.push("Invalid price");if(!image||!/^https?:\/\//i.test(image))warnings.push("Invalid image URL");
+ const link=new URL("product.html?id="+encodeURIComponent(p.id||""),location.href).href;
+ const sale=Number.isFinite(compare)&&compare>price&&Number.isFinite(price)?price.toFixed(2)+" "+currency:"";
+ return {id:String(p.id||""),sku_id:String(p.id||""),title,description,availability,condition:"new",price:(Number.isFinite(price)&&price>=0?price:0).toFixed(2)+" "+currency,currency,link,image_link:image,brand:$("brand").value.trim()||"DODS Commerce",product_type:String(p.category||""),category:String(p.category||""),sale_price:sale,google_product_category:"",_warnings:warnings};
 }
+function currentFields(){return templates[$("template").value].fields}
 function render(){
-const products=window.DODS_PRODUCTS;
-if(!Array.isArray(products)){feed=[];$("productCount").textContent="0";$("warningCount").textContent="0";$("feedRows").innerHTML='<tr><td colspan="8">Product data not found. Check data/products.js.</td></tr>';$("status").className="notice error";$("status").textContent="Could not load window.DODS_PRODUCTS. Save this page inside themes/ecommerce/ so data/products.js resolves correctly.";$("exportBtn").disabled=true;return;}
-feed=products.map(makeFeed);const warningCount=feed.filter(p=>p._warnings.length).length;
-$("productCount").textContent=feed.length;$("warningCount").textContent=warningCount;
-$("feedRows").innerHTML=feed.map((p,i)=>'<tr><td><img src="'+esc(p.image_link)+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"></td><td>'+esc(p.id)+'</td><td><strong>'+esc(p.title)+'</strong><br><span class="muted">'+esc(products[i].category||"Uncategorised")+'</span></td><td>'+esc(p.price)+(p.sale_price?'<br><span class="muted">Sale: '+esc(p.sale_price)+'</span>':"")+'</td><td>'+esc(p.availability)+'</td><td>'+(p.image_link?'<a href="'+esc(p.image_link)+'" target="_blank" rel="noopener">Open image</a>':"Missing")+'</td><td><a href="'+esc(p.link)+'" target="_blank" rel="noopener">Open product</a></td><td>'+(p._warnings.length?'<span style="color:#ffbdad">'+esc(p._warnings.join(", "))+'</span>':'<span class="pill">Ready</span>')+'</td></tr>').join("");
-$("status").className="notice";$("status").innerHTML="<strong>Catalog loaded.</strong> "+feed.length+" product(s) found. "+warningCount+" product(s) have validation warnings."; $("exportBtn").disabled=!feed.length;
+ const products=window.DODS_PRODUCTS;
+ if(!Array.isArray(products)){feed=[];$("productCount").textContent="0";$("warningCount").textContent="0";$("feedRows").innerHTML='<tr><td>Product data not found. Check data/products.js.</td></tr>';$("tableHead").innerHTML="";$("status").className="status error";$("status").textContent="Could not load window.DODS_PRODUCTS. Ensure this page is saved in themes/ecommerce/.";$("exportBtn").disabled=true;return}
+ feed=products.map(mapProduct);const warn=feed.filter(p=>p._warnings.length).length,fields=currentFields();
+ $("productCount").textContent=feed.length;$("warningCount").textContent=warn;$("templateStat").textContent=templates[$("template").value].label;
+ $("tableHead").innerHTML="<tr>"+["Image",...fields,"Validation"].map(f=>"<th>"+esc(f)+"</th>").join("")+"</tr>";
+ $("feedRows").innerHTML=feed.map(p=>"<tr><td><img src='"+esc(p.image_link)+"' alt='' ></td>"+fields.map(f=>"<td>"+esc(p[f])+"</td>").join("")+"<td>"+(p._warnings.length?"<span class='warning'>"+esc(p._warnings.join(", "))+"</span>":"<span class='pill'>Ready</span>")+"</td></tr>").join("");
+ $("status").className="status";$("status").innerHTML="<strong>Catalog loaded:</strong> "+feed.length+" products · "+warn+" with validation warnings · "+templates[$("template").value].label+".";
+ $("exportBtn").disabled=!feed.length;
 }
-function csv(v){return '"'+String(v??"").replace(/"/g,'""')+'"';}
-function exportCsv(){if(!feed.length)return;const rows=[fields.map(csv).join(",")];feed.forEach(p=>rows.push(fields.map(k=>csv(p[k])).join(",")));const blob=new Blob(["\uFEFF"+rows.join("\r\n")],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="dods-meta-product-feed.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);$("status").className="notice";$("status").innerHTML="<strong>CSV exported.</strong> Downloaded dods-meta-product-feed.csv. Review the feed and verify live Meta Commerce Manager requirements before upload.";}
-$("refreshBtn").addEventListener("click",render);$("exportBtn").addEventListener("click",exportCsv);render();
+function csvCell(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
+function xmlEscape(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;")}
+function generate(){
+ if(!feed.length)return;
+ const type=$("fileType").value, fields=currentFields(), name=($("fileName").value.trim()||"dods-product-feed").replace(/\.(csv|xml|txt)$/i,"").replace(/[^a-zA-Z0-9_-]+/g,"-");
+ let content="",mime="",extension=type;
+ if(type==="csv"){content=[fields.map(csvCell).join(","),...feed.map(p=>fields.map(f=>csvCell(p[f])).join(","))].join("\r\n");mime="text/csv;charset=utf-8";}
+ else if(type==="txt"){content=[fields.join("\t"),...feed.map(p=>fields.map(f=>String(p[f]??"").replace(/[\t\r\n]/g," ")).join("\t"))].join("\r\n");mime="text/plain;charset=utf-8";}
+ else {
+  const root=$("itemsWrapper").value.trim()||"products", item=$("itemWrapper").value.trim()||"product";
+  const valid=/^[A-Za-z_][A-Za-z0-9_.-]*$/;
+  if(!valid.test(root)||!valid.test(item)){ $("status").className="status error";$("status").textContent="XML wrapper names must start with a letter or underscore and contain only letters, numbers, dots, underscores or hyphens.";return; }
+  content='<?xml version="1.0" encoding="UTF-8"?>\n<'+root+'>\n'+feed.map(p=>'  <'+item+'>\n'+fields.map(f=>'    <'+f+'>'+xmlEscape(p[f])+'</'+f+'>').join("\n")+'\n  </'+item+'>').join("\n")+'\n</'+root+'>';
+  mime="application/xml;charset=utf-8";
+ }
+ const blob=new Blob(["\uFEFF"+content],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name+"."+extension;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ $("status").className="status";$("status").innerHTML="<strong>Feed generated:</strong> "+esc(name+"."+extension)+" · "+feed.length+" products. Review platform requirements before any live upload.";
+}
+$("refreshBtn").addEventListener("click",render);$("exportBtn").addEventListener("click",generate);
+["template","currency","brand"].forEach(id=>$(id).addEventListener("change",render));
+$("fileType").addEventListener("change",()=>{$("itemsWrapper").disabled=$("fileType").value!=="xml";$("itemWrapper").disabled=$("fileType").value!=="xml"});
+$("itemsWrapper").disabled=true;$("itemWrapper").disabled=true;
+render();
 })();
-</script></body></html>
+</script>
+</body></html>
